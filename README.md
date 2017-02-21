@@ -16,10 +16,7 @@ python server.py                # start the server
 ### Setting up the client
 #### _Inside 'client' folder_
 ```bash
-npm install -g http-server      # Install http-server globally
 npm install                     # install npm modules
 bower install                   # install bower modules
-grunt                           # run tasks defined in gruntfile.js
-cd dist                         # get into dist directory created by grunt
-http-server                     # run the client
+grunt serve                     # run tasks defined in gruntfile.js and start server
 ```

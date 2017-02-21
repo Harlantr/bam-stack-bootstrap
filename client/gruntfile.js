@@ -3,17 +3,17 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
     grunt.config.init({
-        //Remove all files from dist directory
+        // Remove all files from dist directory
         clean: ['dist/*'],
 
-        //Inject bower components into index.html
+        // Inject bower components into index.html
         wiredep: {
           task: {
             src: ['app/**/*.html']
           }
         },
 
-        //Copy necessary files into dist directory
+        // Copy necessary files into dist directory
         copy:{
             main: {
                 files: [
@@ -22,7 +22,7 @@ module.exports = function(grunt) {
             }
         },
 
-        //Create usemin configuration based on commment blocks in index.html
+        // Create usemin configuration based on commment blocks in index.html
         useminPrepare: {
             html: 'app/index.html',
             options: {
@@ -30,19 +30,19 @@ module.exports = function(grunt) {
             }
         },
 
-        //Global options for cssmin
+        // Global options for cssmin
         cssmin: {
             options: {
                 keepSpecialComments: 0
             }
         },
 
-        //Run usemin configurations on index.html
+        // Run usemin configurations on index.html
         usemin:{
             html:['dist/index.html']
         },
 
-        //Minify html
+        // Minify html
         htmlmin: {
             dist: {
                 options: {
@@ -58,7 +58,7 @@ module.exports = function(grunt) {
             }
         },
 
-        //Remove unused CSS
+        // Remove unused CSS
         uncss: {
             dist: {
                 src: ['dist/index.html'],
@@ -68,6 +68,19 @@ module.exports = function(grunt) {
                 }
             }
         },
+
+        // Start a web server
+        connect: {
+            serve: {
+                options: {
+                    port: 8080,
+                    hostname: 'localhost',
+                    base: 'dist',
+                    open: false,
+                    keepalive: true
+                }
+            }
+        }
     });
 
     grunt.registerTask('default',[
@@ -81,6 +94,11 @@ module.exports = function(grunt) {
         'usemin',
         'htmlmin',
         'uncss'
+    ]);
+
+    grunt.registerTask('serve',[
+        'default',
+        'connect'
     ]);
 }
 
