@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="jumbotron text-center">
+        <h1>Let's Do Some Shit!
+    </div>
+    <div id="todo-form" class="row">
+        <div class="col-sm-8 col-sm-offset-2 text-center">
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control input-lg text-center" ng-model="formData.text">
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
+            </form>
+        </div>
+    </div>
+    <div id="todo-list" class="row">
+        <div class="col-sm-4 col-sm-offset-2">
+            <div class="checkbox" ng-repeat="todo in todos">
+                <input type="button" class="btn btn-danger" value="X" ng-click="deleteTodo(todo._id)">
+                <label style="font-size: large;">{{todo.text}}</label>
+            </div>
+        </div>
+    </div>
+</div>

@@ -9,22 +9,23 @@ module.exports = function(grunt) {
         // Inject bower components into index.html
         wiredep: {
           task: {
-            src: ['app/**/*.html']
+            src: ['./app/**/*.html']
           }
         },
 
         // Copy necessary files into dist directory
         copy:{
             main: {
-                files: [
-                    { src: './app/index.html', dest: 'dist/index.html' }
-                ]
+                expand: true,
+                cwd: './app',
+                src: '**/*.html',
+                dest: 'dist/'
             }
         },
 
         // Create usemin configuration based on commment blocks in index.html
         useminPrepare: {
-            html: 'app/index.html',
+            html: './app/index.html',
             options: {
                 dest: 'dist'
             }
@@ -61,7 +62,7 @@ module.exports = function(grunt) {
         // Remove unused CSS
         uncss: {
             dist: {
-                src: ['dist/index.html'],
+                src: ['dist/**/*.html'],
                 dest: 'dist/styles/style.css',
                 options: {
                     report: 'min'
